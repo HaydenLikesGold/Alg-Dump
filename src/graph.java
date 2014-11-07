@@ -1,38 +1,29 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
+
 /**
  * Created by hgoldstien on 11/4/14.
  */
 public class graph {
-    private static HashMap<String, ArrayList<ArrayList<String>>> graphMatrix;
+    private static HashMap<String, ArrayList<Set<String>>> graphMatrix;
 
     public static void init()
     {
-        graphMatrix = new HashMap<String, ArrayList<ArrayList<String>>>();
+        graphMatrix = new HashMap<String, ArrayList<Set<String>>>();
     }
-    public static void ensureHopSize(String name, int hopSize)
-    {
-        while(graphMatrix.get(name).size() < hopSize)
-        {
-            ArrayList<String> inside = new ArrayList<String>();
-            graphMatrix.get(name).add(inside);
-        }
-    }
+
     public static void addVertex(String name)
     {
-        ArrayList<ArrayList<String>> dataHolding = new ArrayList<ArrayList<String>>();
-        ArrayList<String> inside = new ArrayList<String>();
+        ArrayList<Set<String>> dataHolding = new ArrayList<Set<String>>();
         if (graphMatrix.containsKey(name)){return;}
-        dataHolding.add(inside);
         graphMatrix.put(name, dataHolding);
     }
 
     private static void oneWayLink(String from, String to, int hopSize)
     {
-        ArrayList<ArrayList<String>> fromData = graphMatrix.get(from);
-        ensureHopSize(from, hopSize);
-        ensureHopSize(to, hopSize);
-        ArrayList<String> newPathArray = fromData.get(hopSize);
+        ArrayList<Set<String>> fromData = graphMatrix.get(from);
+        Set<String> newPathArray = fromData.get(hopSize);
         if (newPathArray.contains(to)){return;}
         newPathArray.add(to);
         fromData.set(hopSize, newPathArray);
@@ -57,7 +48,7 @@ public class graph {
         {
             System.out.print(x + ": ");
             Integer i = 0;
-            for (ArrayList<String> y : graphMatrix.get(x))
+            for (Set<String> y : graphMatrix.get(x))
             {
                 System.out.print(i.toString()+": "+y+" ");
                 i++;
