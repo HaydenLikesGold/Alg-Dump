@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -15,30 +16,39 @@ public class graph {
 
     public static void addVertex(String name)
     {
-        ArrayList<Set<String>> dataHolding = new ArrayList<Set<String>>();
         if (graphMatrix.containsKey(name)){return;}
-        graphMatrix.put(name, dataHolding);
+        graphMatrix.put(name, new ArrayList<Set<String>>());
     }
 
-    private static void oneWayLink(String from, String to, int hopSize)
+    private static void addLink(String from, String to, int hopSize)
     {
         ArrayList<Set<String>> fromData = graphMatrix.get(from);
-        Set<String> newPathArray = fromData.get(hopSize);
-        if (newPathArray.contains(to)){return;}
-        newPathArray.add(to);
-        fromData.set(hopSize, newPathArray);
+        try{
+            fromData.get(hopSize);
+        } catch (IndexOutOfBoundsException ex)
+        {
+            Set<String> temp = new HashSet<String>();
+            temp.add(to);
+            fromData.add(hopSize, temp);
+            graphMatrix.replace(from, fromData);
+            System.out.println("Added "+to+" to "+from+" (With out of bounds)");
+            return;
+        }
+        fromData.get(hopSize).add(to);
+        System.out.println("Added "+to+" to "+from);
         graphMatrix.replace(from, fromData);
     }
-    private static void addLinkInfo(String x, String y, int hopSize)
+    private static void addHop(String x, String y, int hopSize)
     {
-        oneWayLink(x, y, hopSize);
-        oneWayLink(y, x, hopSize);
+        System.out.println("AddHop: " + x + " " + y + " " + hopSize);
+        addLink(x, y, hopSize);
+        addLink(y, x, hopSize);
     }
     public static void addEdge(String x, String y)
     {
         addVertex(x);
         addVertex(y);
-        addLinkInfo(x, y, 0);
+        addHop(x, y, 0);
     }
 
     private static void printVertices()
