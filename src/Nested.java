@@ -26,7 +26,7 @@ public class Nested {
         private void UpdateAdjacency(int[][] verticies) {
             for (int i = 0; i < n; i++){
                 for (int j = 0; j < n; j++){
-                    if ((i != j) && (nondominate(verticies[i], verticies[j]))) {
+                    if ((i != j) && ((verticies[i][0] < verticies[j][0]) && (verticies[i][1] < verticies[j][1]) && (verticies[i][2] < verticies[j][2]))) {
                         appendToArray(i, j);
                     }
                 }
@@ -95,11 +95,6 @@ public class Nested {
             }
             return max;
         }
-
-    }
-
-    public static boolean nondominate(int[] one, int[] two){
-        return (one[0] < two[0]) && (one[1] < two[1]) && (one[2] < two[2]);
     }
 
     public static void main(String[] args){
