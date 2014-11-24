@@ -5,11 +5,11 @@ import java.util.*;
  */
 public class Spectrum {
     public static class Graph {
-        private ArrayList<String> vertices;
+        private HashSet<String> vertices;
         private HashMap<String, ArrayList<String>> edges;
         
         public void init(){
-            vertices = new ArrayList<String>();
+            vertices = new HashSet<String>();
             edges = new HashMap<String, ArrayList<String>>();
         }
 
@@ -126,6 +126,7 @@ public class Spectrum {
                 findAssociatedVertices(graph, split);
             }
             if (split[0].equals("reset")) {
+                System.out.println("reset");
                 System.out.println("----------");
                 caseNum++;
                 graph = new Graph();
