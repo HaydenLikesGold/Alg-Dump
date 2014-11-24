@@ -18,6 +18,40 @@ public class Nested {
                 verticies[i]= new int[0];
                 adjacency[i]= new int[0];
             }
+            readInAndAssignData(verticies);
+
+            UpdateAdjacency(verticies);
+        }
+
+        private void UpdateAdjacency(int[][] verticies) {
+            for (int i = 0; i < n; i++){
+                for (int j = 0; j < n; j++){
+                    if ((i != j) && (nondominate(verticies[i], verticies[j]))) {
+                        appendToArray(i, j);
+                    }
+                }
+            }
+        }
+
+        private void appendToArray(int i, int j) {
+            int[] temp = adjacency[i];
+            int length=0;
+            if (temp != null) {
+                length = temp.length;
+            }
+            int[] newArray = new int[length+1];
+            int counter = 0;
+            if (temp!=null) {
+                for (int x : temp) {
+                    newArray[counter] = x;
+                    counter++;
+                }
+            }
+            newArray[counter] = j;
+            adjacency[i] = newArray;
+        }
+
+        private void readInAndAssignData(int[][] verticies) {
             for(int i = 0; i < n; i++){
                 int temp1 = sc.nextInt();
                 int temp2 = sc.nextInt();
@@ -26,35 +60,12 @@ public class Nested {
                 Arrays.sort(temp);
                 verticies[i] = temp;
             }
-
-            for (int i = 0; i < n; i++){
-                for (int j = 0; j < n; j++){
-                    if ((i != j) && (less(verticies[i], verticies[j]))) {
-                        int[] temp = adjacency[i];
-                        int length=0;
-                        if (temp != null) {
-                            length = temp.length;
-                        }
-                        int[] newArray = new int[length+1];
-                        int counter = 0;
-                        if (temp!=null) {
-                            for (int x : temp) {
-                                newArray[counter] = x;
-                                counter++;
-                            }
-                        }
-                        newArray[counter] = j;
-                        adjacency[i] = newArray;
-                    }
-                }
-            }
         }
 
         public void depthFristSearch(int vertex, int[] distances){
             distances[vertex] = 0;
             for (int i:adjacency[vertex])
             {
-                System.out.println("DFS:"+i);
                 if (distances[i] == -1){
                     depthFristSearch(i, distances);
                 }
@@ -67,26 +78,27 @@ public class Nested {
             int[] distances = new int[n];
             for (int i=0; i<n; i++){
                 distances[i] = -1;
-                System.out.println(i);
             }
             for (int i=0; i<n; i++){
                 if (distances[i] == -1){
-                    System.out.println(" Call DFS");
                     depthFristSearch(i, distances);
                 }
             }
+            return getMaxFromArray(distances);
+
+        }
+
+        private int getMaxFromArray(int[] distances) {
             int max = -1;
             for (int i : distances){
-                System.out.println(i);
                 if (i > max){max = i;}
             }
             return max;
-
         }
 
     }
 
-    public static boolean less(int[] one, int[] two){
+    public static boolean nondominate(int[] one, int[] two){
         return (one[0] < two[0]) && (one[1] < two[1]) && (one[2] < two[2]);
     }
 
@@ -98,14 +110,13 @@ public class Nested {
             caseNumber++;
             Graph theGraph = new Graph();
             theGraph.createGraph(size);
-            if (caseNumber > 1){System.out.println();}
+            if (caseNumber > 1){System.out.println();} //Line between cases
             int temp = 1 + theGraph.longestDistance();
             String string = "";
             if (temp != 1)
                 string = "es";
             System.out.println("Case "+Integer.toString(caseNumber)+": "+temp+" box"+string);
             size = sc.nextInt();
-
         }
     }
 }
