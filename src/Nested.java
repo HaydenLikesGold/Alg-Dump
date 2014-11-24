@@ -15,7 +15,7 @@ public class Nested {
             adjacency = new int[n][];
             int[][] verticies = new int[n][];
             for(int i = 0; i < n; i++){
-                verticies[i]= new int[3];
+                verticies[i]= new int[0];
                 adjacency[i]= new int[0];
             }
             for(int i = 0; i < n; i++){
@@ -30,13 +30,21 @@ public class Nested {
             for (int i = 0; i < n; i++){
                 for (int j = 0; j < n; j++){
                     if ((i != j) && (less(verticies[i], verticies[j]))) {
-                        int[] x = adjacency[i];
-                        int[] newArray = new int[x.length + 1];
-                        for (int w = 0; w < x.length; w++)
-                        {
-                            newArray[w] = x[w];
+                        int[] temp = adjacency[i];
+                        int length=0;
+                        if (temp != null) {
+                            length = temp.length;
                         }
-                        newArray[newArray.length-1] = j;
+                        int[] newArray = new int[length+1];
+                        int counter = 0;
+                        if (temp!=null) {
+                            for (int x : temp) {
+                                newArray[counter] = x;
+                                counter++;
+                            }
+                        }
+                        newArray[counter] = j;
+                        adjacency[i] = newArray;
                     }
                 }
             }
@@ -46,6 +54,7 @@ public class Nested {
             distances[vertex] = 0;
             for (int i:adjacency[vertex])
             {
+                System.out.println("DFS:"+i);
                 if (distances[i] == -1){
                     depthFristSearch(i, distances);
                 }
@@ -58,14 +67,17 @@ public class Nested {
             int[] distances = new int[n];
             for (int i=0; i<n; i++){
                 distances[i] = -1;
+                System.out.println(i);
             }
             for (int i=0; i<n; i++){
                 if (distances[i] == -1){
+                    System.out.println(" Call DFS");
                     depthFristSearch(i, distances);
                 }
             }
             int max = -1;
             for (int i : distances){
+                System.out.println(i);
                 if (i > max){max = i;}
             }
             return max;
