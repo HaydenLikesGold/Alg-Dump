@@ -77,15 +77,16 @@ public class Nested {
     public static boolean less(int[] one, int[] two){
         return (one[0] < two[0]) && (one[1] < two[1]) && (one[2] < two[2]);
     }
+
     public static void main(String[] args){
         sc = new Scanner(System.in);
         int caseNumber = 0;
         int size = sc.nextInt();
         while (size != -1) {
-            System.out.println("Enter Case");
             caseNumber++;
             Graph theGraph = new Graph();
             theGraph.createGraph(size);
+            if (caseNumber > 1){System.out.println();}
             int temp = 1 + theGraph.longestDistance();
             String string = "";
             if (temp != 1)
