@@ -5,6 +5,7 @@ This is a collection of solutions to famous algorithm based problems that I have
 ##Problems Covered
 The problems covered include:
   * [Graph Isomorphism](http://en.wikipedia.org/wiki/Graph_isomorphism)
+  * [Splay Tree](http://en.wikipedia.org/wiki/Splay_tree)
 
 ##Roadmap
 Each folder contains the solution to a different problem, solved in either Python or Java. Each individual folder contains a README with specific details.
