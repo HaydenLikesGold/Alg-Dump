@@ -1,0 +1,50 @@
+Alaska,1717854
+Texas,695621
+California,423970
+Montana,380838
+New Mexico,314915
+Arizona,295254
+Nevada,286351
+Colorado,269601
+Oregon,254805
+Wyoming,253336
+Michigan,250494
+Minnesota,225171
+Utah,219887
+Idaho,216446
+Kansas,213096
+Nebraska,200345
+South Dakota,199731
+Washington,184665
+North Dakota,183112
+Oklahoma,181035
+Missouri,180533
+Florida,170304
+Wisconsin,169639
+Georgia,153909
+Illinois,149998
+Iowa,145743
+New York,141299
+North Carolina,139389
+Arkansas,137732
+Alabama,135765
+Louisiana,134264
+Mississippi,125434
+Pennsylvania,119283
+Ohio,116096
+Virginia,110785
+Tennessee,109151
+Kentucky,104659
+Indiana,94321
+Maine,91646
+South Carolina,82932
+West Virginia,62755
+Maryland,32133
+Hawaii,28311
+Massachusetts,27336
+Vermont,24901
+New Hampshire,24216
+New Jersey,22588
+Connecticut,14357
+Delaware,6447
+Rhode Island,4002
