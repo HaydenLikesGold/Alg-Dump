@@ -9,6 +9,8 @@ The problems covered include:
   * [State Subset Sum](http://en.wikipedia.org/wiki/Subset_sum_problem)
   * Stuffed Boxes
   * Spectrum
+  * Stern-Brocot Number System
+  * Light Switches
 
 ##Roadmap
 Each folder contains the solution to a different problem, solved in either Python or Java. Each individual folder contains a README with specific details.
