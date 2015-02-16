@@ -4,4 +4,4 @@ This problem implements a [Splay Tree](http://en.wikipedia.org/wiki/Splay_tree).
 
 I also included the test file I highlight how I actually did some of the testing on the class.
 
-Sorry for the inconvience.
+Sorry for the inconvenience.
