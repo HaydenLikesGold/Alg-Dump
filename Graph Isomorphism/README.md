@@ -4,12 +4,14 @@ This problem is based on determining if a graph is [isomorphic](http://en.wikipe
 
 For example:
 
-3
-0 0 1
-0 0 0
-1 0 0
-0 1 0
-1 0 0
-0 0 0
+3<br>
+0 0 1<br>
+0 0 0<br>
+1 0 0<br>
+0 1 0<br>
+1 0 0<br>
+0 0 0<br>
 
-The program itself uses python3, you can use the makefile to run the test files provided. Simply run the command `make test` to run through the provided test files. It is assumed the input is properly formatted.
+The program itself uses python3, you can use the makefile to run the test files provided. Simply run the command
+`make test`
+to run through the provided test files. It is assumed the input is properly formatted.
