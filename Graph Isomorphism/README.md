@@ -13,5 +13,7 @@ For example:
 0 0 0<br>
 
 The program itself uses python3, you can use the makefile to run the test files provided. Simply run the command
+
 `make test`
+
 to run through the provided test files. It is assumed the input is properly formatted.
