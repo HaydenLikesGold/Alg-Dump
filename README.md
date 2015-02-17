@@ -1,5 +1,7 @@
 #Alg-Dump
+Published: 15-February-2015
 
+##Introduction
 This is a collection of solutions to famous algorithm based problems that I have solved through academic courses. With that said, **this is all academic code, so please keep that in mind when looking through it**. I reconize that there is much room for improvement, and refactoring, but thought I should get some of the interesting problems out there.
 
 ##Problems Covered
